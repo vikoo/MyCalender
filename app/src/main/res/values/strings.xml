@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">CalenderApp</string>
+
+    <string name="no_event">No event</string>
+    <string name="all_day">ALL DAY</string>
+
+    <string name="title_agenda">Agenda View</string>
+    <string name="title_calender">Calender View</string>
+
+</resources>

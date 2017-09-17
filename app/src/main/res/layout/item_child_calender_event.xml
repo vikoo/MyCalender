@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="@dimen/event_time_text_width"
+        android:layout_height="wrap_content"
+        android:paddingEnd="@dimen/padding_horizontal"
+        android:paddingLeft="@dimen/padding_horizontal"
+        android:paddingRight="@dimen/padding_horizontal"
+        android:paddingStart="@dimen/padding_horizontal"
+        android:paddingTop="20dp"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/small_text_size"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/duration"
+        android:layout_width="@dimen/event_time_text_width"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/time"
+        android:paddingEnd="@dimen/padding_horizontal"
+        android:paddingLeft="@dimen/padding_horizontal"
+        android:paddingRight="@dimen/padding_horizontal"
+        android:paddingStart="@dimen/padding_horizontal"
+        android:paddingTop="@dimen/event_sub_text_padding_top"
+        android:textColor="@color/colorDividerGrey"
+        android:textSize="@dimen/extra_small_text_size"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/event_color"
+        android:layout_width="@dimen/event_color_icon_size"
+        android:layout_height="@dimen/event_color_icon_size"
+        android:layout_marginTop="24dp"
+        android:layout_toEndOf="@+id/time"
+        android:layout_toRightOf="@+id/time"
+        android:background="@drawable/circle_drawable" />
+
+    <TextView
+        android:id="@+id/event"
+        style="@style/EventText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/event_color"
+        android:layout_toRightOf="@+id/event_color"
+        android:paddingTop="18dp"
+        android:maxLines="2"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/big_text_size"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/location"
+        style="@style/EventText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/time"
+        android:layout_toEndOf="@+id/event_color"
+        android:layout_toRightOf="@+id/event_color"
+        android:paddingBottom="20dp"
+        android:paddingTop="@dimen/event_sub_text_padding_top"
+        android:textColor="@color/colorDividerGrey"
+        android:textSize="@dimen/normal_text_size"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_height"
+        android:layout_below="@+id/location"
+        android:background="@color/colorDividerGrey" />
+</RelativeLayout>

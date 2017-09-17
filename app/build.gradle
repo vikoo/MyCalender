@@ -1,0 +1,67 @@
+apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+    defaultConfig {
+        applicationId "com.vikoo.calenderapp"
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.google.code.gson:gson'
+    })
+
+    compile 'com.google.code.gson:gson:2.8.0'
+    compile 'com.android.support:appcompat-v7:26.0.0'
+
+    // lifecycle component
+    compile "android.arch.lifecycle:runtime:1.0.0-alpha9"
+    compile "android.arch.lifecycle:extensions:1.0.0-alpha9"
+    annotationProcessor "android.arch.lifecycle:compiler:1.0.0-alpha9"
+//    compile "android.arch.persistence.room:runtime:1.0.0-alpha9"
+
+    // db - room
+    annotationProcessor "android.arch.persistence.room:compiler:1.0.0-alpha9"
+    compile "android.arch.persistence.room:rxjava2:1.0.0-alpha9"
+    apt "android.arch.persistence.room:compiler:1.0.0-alpha9"
+    compile 'com.jakewharton.timber:timber:4.5.1'
+
+    // ui libs
+    compile 'com.github.sundeepk:compact-calendar-view:2.0.2.2'
+    compile 'com.truizlop.sectionedrecyclerview:library:1.2.0'
+
+    // ui injection
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    apt 'com.jakewharton:butterknife-compiler:8.8.1'
+
+    // dependency injection
+    compile "com.google.dagger:dagger:2.11"
+    annotationProcessor "com.google.dagger:dagger-compiler:2.11"
+    apt "com.google.dagger:dagger-compiler:2.11"
+
+    // network - retrofit
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.8.1'
+
+    // testing
+    testCompile 'junit:junit:4.12'
+    testCompile "android.arch.persistence.room:testing:1.0.0-alpha9"
+}
