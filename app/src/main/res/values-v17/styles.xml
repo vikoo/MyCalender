@@ -10,4 +10,16 @@
         <item name="android:maxLines">1</item>
         <item name="android:ellipsize">end</item>
     </style>
+
+    <style name="EditText">
+        <!-- Customize your theme here. -->
+        <item name="android:paddingTop">@dimen/padding_vertical</item>
+        <item name="android:paddingBottom">@dimen/padding_vertical</item>
+        <item name="android:layout_marginRight">@dimen/padding_horizontal</item>
+        <item name="android:layout_marginEnd">@dimen/padding_horizontal</item>
+        <item name="android:layout_marginStart">@dimen/event_text_padding_left</item>
+        <item name="android:layout_marginLeft">@dimen/event_text_padding_left</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
 </resources>

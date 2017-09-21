@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <TextView
@@ -33,7 +34,7 @@
         android:layout_centerVertical="true"
         android:layout_toLeftOf="@+id/temperature"
         android:layout_toStartOf="@+id/temperature"
-        android:src="@drawable/ic_weather" />
+        app:srcCompat="@drawable/ic_cloud" />
 
     <View
         android:layout_width="match_parent"
