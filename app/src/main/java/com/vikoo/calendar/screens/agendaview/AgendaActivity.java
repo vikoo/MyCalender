@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Toast;
 
 import com.vikoo.calendar.CalendarApplication;
 import com.vikoo.calendar.R;
@@ -30,7 +31,7 @@ import butterknife.OnClick;
 
 public class AgendaActivity extends BaseActivity implements AgendaViewContract.View{
 
-    private static final String EXTRA_DATE = "date";
+    public static final String EXTRA_DATE = "date";
 
     @Inject
     AgendaViewContract.Presenter mPresenter;
@@ -61,7 +62,12 @@ public class AgendaActivity extends BaseActivity implements AgendaViewContract.V
         mAgendaView.setLayoutManager(layoutManager);
         mAgendaView.setAdapter(mAdapter);
         mPresenter.attach(this, mApplicationComponent);
-        mDate = (Date) getIntent().getExtras().getSerializable(EXTRA_DATE);
+        if(getIntent() != null && getIntent().getExtras() != null && getIntent().getExtras().containsKey(EXTRA_DATE)) {
+            mDate = (Date) getIntent().getExtras().getSerializable(EXTRA_DATE);
+        } else{
+            Toast.makeText(getApplicationContext(), R.string.toast_date_missing, Toast.LENGTH_SHORT).show();
+            finish();
+        }
     }
 
     @Override

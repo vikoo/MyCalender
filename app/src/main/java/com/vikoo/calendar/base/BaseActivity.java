@@ -12,7 +12,7 @@ import com.vikoo.calendar.di.component.ApplicationComponent;
 import butterknife.BindView;
 
 /**
- * Created by vekariya.r on 19/09/17.
+ * Created by vikoo on 19/09/17.
  */
 
 public class BaseActivity extends AppCompatActivity {

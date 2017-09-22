@@ -3,7 +3,7 @@ package com.vikoo.calendar.screens.addevent;
 import org.junit.Test;
 
 /**
- * Created by vekariya.r on 22/09/17.
+ * Created by vikoo on 22/09/17.
  */
 public class AddEventPresenterTest {
     @Test
