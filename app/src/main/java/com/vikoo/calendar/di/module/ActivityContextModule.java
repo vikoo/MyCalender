@@ -16,23 +16,23 @@ import dagger.Provides;
 @Module
 public class ActivityContextModule {
 
-    private final Activity activity;
+    private final Activity mActivity;
 
     public ActivityContextModule(Activity context){
-        activity = context;
+        mActivity = context;
     }
 
     @Provides
     @ActivityContextQualifier
     @ActivityScope
     public Context appContext(){
-        return activity;
+        return mActivity;
     }
 
     @Provides
     @ActivityContextQualifier
     @ActivityScope
     public Activity activity(){
-        return activity;
+        return mActivity;
     }
 }

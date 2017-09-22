@@ -4,11 +4,13 @@ import android.support.test.espresso.Espresso;
 import android.support.test.espresso.action.ViewActions;
 import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
+import android.support.test.runner.AndroidJUnit4;
 
 import com.vikoo.calendar.R;
 
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.replaceText;
@@ -20,10 +22,11 @@ import static org.hamcrest.Matchers.not;
 /**
  * Created by vikoo on 22/09/17.
  */
+@RunWith(AndroidJUnit4.class)
 public class AddEventActivityTest {
 
     @Rule
-    public ActivityTestRule<AddEventActivity> activityRule
+    public ActivityTestRule<AddEventActivity> mActivityRule
             = new ActivityTestRule<>(AddEventActivity.class);
 
     private void loadUi(String eventName, String date, String time, String duration, boolean isAllDay){

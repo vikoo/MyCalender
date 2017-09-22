@@ -15,15 +15,15 @@ import dagger.Provides;
 @Module
 public class ContextModule {
 
-    private final Context appContext;
+    private final Context mAppContext;
 
     public ContextModule(Context context){
-        appContext = context;
+        mAppContext = context;
     }
 
     @Provides
     @AppScope
     public @AppContextQualifier Context context(){
-        return appContext;
+        return mAppContext;
     }
 }

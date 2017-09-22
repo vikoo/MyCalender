@@ -30,7 +30,7 @@ public class AgendaPresenter implements AgendaViewContract.Presenter {
 
     private AgendaViewContract.View mView;
     private ApplicationComponent mApplicationComponent;
-    private String latLng = "37.8267,-122.4233";
+    private String mLatLng = "37.8267,-122.4233";
 
     @Override
     public void attach(AgendaViewContract.View view, ApplicationComponent applicationComponent) {
@@ -99,7 +99,7 @@ public class AgendaPresenter implements AgendaViewContract.Presenter {
     private void doNetwork(long start, long end){
         // do network request
         if(Utils.isTimeInWeatherRange(start, end, System.currentTimeMillis())){
-            mApplicationComponent.getRestApi().getWeatherData(latLng).enqueue(new Callback<WeatherResponse>() {
+            mApplicationComponent.getRestApi().getWeatherData(mLatLng).enqueue(new Callback<WeatherResponse>() {
                 @Override
                 public void onResponse(Call<WeatherResponse> call, Response<WeatherResponse> response) {
                     processWeather(response.body());

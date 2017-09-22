@@ -34,7 +34,7 @@ public class AddEventPresenter implements AddEventContract.Presenter {
 
 
     @Override
-    public void validate(String eventName, String date, String time, String duration, boolean isAllDay) {
+    public void validate(String eventName, String date, String time, String duration, boolean isAllDay, int eventColor) {
         if(TextUtils.isEmpty(eventName)){
             mView.onValidationFailed(ERROR_NAME);
             return;
@@ -51,11 +51,11 @@ public class AddEventPresenter implements AddEventContract.Presenter {
             mView.onValidationFailed(ERROR_DURATION);
             return;
         }
-        addEvent(eventName, date, time, duration, isAllDay);
+        addEvent(eventName, date, time, duration, isAllDay, eventColor);
 
     }
 
-    private void addEvent(String name, String date, String time, String duration, boolean isAllDay){
+    private void addEvent(String name, String date, String time, String duration, boolean isAllDay, int eventColor){
         CalenderEvent calenderEvent = new CalenderEvent();
         calenderEvent.eventTitle = name;
         calenderEvent.isAllDayEvent = isAllDay;
@@ -64,7 +64,7 @@ public class AddEventPresenter implements AddEventContract.Presenter {
         calenderEvent.longitude = 0.0d;
         calenderEvent.latitude = 0.0d;
         calenderEvent.location = "";
-        calenderEvent.eventColor = mView.getEventColor();
+        calenderEvent.eventColor = eventColor;
         calenderEvent.time = Utils.getTimeFromInput(date, time);
         mApplicationComponent.getDatabase().getCalenderEventDao().save(calenderEvent);
         mView.onEventAdded();

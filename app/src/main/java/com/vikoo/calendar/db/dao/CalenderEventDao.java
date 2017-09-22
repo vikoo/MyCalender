@@ -26,6 +26,9 @@ public interface CalenderEventDao {
     @Query("SELECT * FROM " + TABLE_NAME)
     Single<List<CalenderEvent>> getAll();
 
+    @Query("SELECT * FROM " + TABLE_NAME)
+    List<CalenderEvent> getAllEvents();
+
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE time >= :startTime AND time < :endTime ORDER BY time ASC")
     Single<List<CalenderEvent>> getEntriesBetweenDate(long startTime, long endTime);
 

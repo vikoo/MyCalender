@@ -24,7 +24,7 @@ import static android.support.test.espresso.assertion.ViewAssertions.matches;
 public class CalendarActivityTest {
 
     @Rule
-    public ActivityTestRule<CalendarActivity> activityRule
+    public ActivityTestRule<CalendarActivity> mActivityRule
             = new ActivityTestRule<>(CalendarActivity.class);
 
     @Test

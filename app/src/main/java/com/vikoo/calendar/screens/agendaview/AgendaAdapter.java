@@ -35,26 +35,26 @@ public class AgendaAdapter extends SectionedRecyclerViewAdapter<HeaderViewHolder
     private static final int TYPE_EVENT = 2;
     private static final int TYPE_WEATHER = 3;
 
+    private List<Agenda> mAgendaList;
+    private Context mContext;
+
     public List<Agenda> getAgendaList() {
-        return agendaList;
+        return mAgendaList;
     }
 
-    public void setAgendaList(List<Agenda> agendaList) {
-        this.agendaList = agendaList;
+    public void setAgendaList(List<Agenda> mAgendaList) {
+        this.mAgendaList = mAgendaList;
         notifyDataSetChanged();
     }
 
-    private List<Agenda> agendaList;
-    private Context mContext;
-
     public AgendaAdapter(List<Agenda> list, Context context){
-        agendaList = list;
+        mAgendaList = list;
         mContext = context;
     }
 
     @Override
     protected int getSectionItemViewType(int section, int position) {
-        BaseEvent event = agendaList.get(section).events.get(position);
+        BaseEvent event = mAgendaList.get(section).events.get(position);
         if (event instanceof CalenderEvent) {
             return TYPE_EVENT;
         } else if (event instanceof NoEvent) {
@@ -65,17 +65,17 @@ public class AgendaAdapter extends SectionedRecyclerViewAdapter<HeaderViewHolder
     }
 
     protected BaseEvent getEvent(int section, int position) {
-        return agendaList.get(section).events.get(position);
+        return mAgendaList.get(section).events.get(position);
     }
 
     @Override
     protected int getSectionCount() {
-        return agendaList.size();
+        return mAgendaList.size();
     }
 
     @Override
     protected int getItemCountForSection(int section) {
-        return agendaList.get(section).events.size();
+        return mAgendaList.get(section).events.size();
     }
 
     @Override
@@ -113,15 +113,15 @@ public class AgendaAdapter extends SectionedRecyclerViewAdapter<HeaderViewHolder
 
     @Override
     protected void onBindSectionHeaderViewHolder(HeaderViewHolder holder, int section) {
-        Agenda agenda = agendaList.get(section);
+        Agenda agenda = mAgendaList.get(section);
         if(Utils.isToday(agenda.dayId)){
-            holder.headerLayout.setBackgroundColor(ContextCompat.getColor(mContext,R.color.colorHeaderBlue));
-            holder.tvDate.setTextColor(ContextCompat.getColor(mContext,R.color.colorDividerBlue));
+            holder.mHeaderLayout.setBackgroundColor(ContextCompat.getColor(mContext,R.color.colorHeaderBlue));
+            holder.mTvDate.setTextColor(ContextCompat.getColor(mContext,R.color.colorDividerBlue));
         } else{
-            holder.headerLayout.setBackgroundColor(ContextCompat.getColor(mContext,R.color.colorHeaderGrey));
-            holder.tvDate.setTextColor(ContextCompat.getColor(mContext,R.color.colorDividerGrey));
+            holder.mHeaderLayout.setBackgroundColor(ContextCompat.getColor(mContext,R.color.colorHeaderGrey));
+            holder.mTvDate.setTextColor(ContextCompat.getColor(mContext,R.color.colorDividerGrey));
         }
-        holder.tvDate.setText(agenda.title);
+        holder.mTvDate.setText(agenda.title);
     }
 
     @Override

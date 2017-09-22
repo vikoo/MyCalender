@@ -34,8 +34,6 @@ import butterknife.OnClick;
 
 public class AddEventActivity extends BaseActivity implements AddEventContract.View{
 
-    private static final String EXTRA_DATE = "date";
-
     @Inject
     AddEventContract.Presenter mPresenter;
 
@@ -66,7 +64,8 @@ public class AddEventActivity extends BaseActivity implements AddEventContract.V
     @BindView(R.id.chk_all_day)
     CheckBox mChkAllDay;
 
-    private boolean isAllDay;
+    private boolean mIsAllDay;
+    private int mEventColor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,11 +83,12 @@ public class AddEventActivity extends BaseActivity implements AddEventContract.V
         mChkAllDay.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                isAllDay = b;
+                mIsAllDay = b;
                 mEtDuration.setEnabled(!b);
                 mEtDuration.setClickable(!b);
             }
         });
+        mEventColor = ContextCompat.getColor(getApplicationContext(), R.color.colorAccent);
     }
 
     @Override
@@ -119,11 +119,6 @@ public class AddEventActivity extends BaseActivity implements AddEventContract.V
     public void onEventAdded() {
         Toast.makeText(getApplicationContext(), R.string.event_add_success, Toast.LENGTH_SHORT).show();
         finish();
-    }
-
-    @Override
-    public int getEventColor() {
-        return ContextCompat.getColor(getApplicationContext(), R.color.colorAccent);
     }
 
     @OnClick({R.id.input_layout_date, R.id.input_date})
@@ -182,7 +177,8 @@ public class AddEventActivity extends BaseActivity implements AddEventContract.V
                 mEtDate.getText().toString(),
                 mEtTime.getText().toString(),
                 mEtDuration.getText().toString(),
-                isAllDay);
+                mIsAllDay,
+                mEventColor);
     }
 
 }

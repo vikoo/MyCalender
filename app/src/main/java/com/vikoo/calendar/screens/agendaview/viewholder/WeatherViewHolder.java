@@ -17,11 +17,11 @@ import butterknife.ButterKnife;
 public class WeatherViewHolder extends ChildViewHolder {
 
     @BindView(R.id.weatherTime)
-    public TextView tvWeatherTime;
+    public TextView mTvWeatherTime;
     @BindView(R.id.temperature)
-    public TextView tvTemperature;
+    public TextView mTvTemperature;
     @BindView(R.id.weatherImage)
-    public ImageView ivWeatherImage;
+    public ImageView mIvWeatherImage;
 
     public WeatherViewHolder(View itemView) {
         super(itemView);
@@ -29,7 +29,7 @@ public class WeatherViewHolder extends ChildViewHolder {
     }
 
     public void setView(WeatherEvent event) {
-        tvTemperature.setText(event.temperature + "°F");
-        tvWeatherTime.setText(event.eventName);
+        mTvTemperature.setText(event.temperature + "°F");
+        mTvWeatherTime.setText(event.eventName);
     }
 }

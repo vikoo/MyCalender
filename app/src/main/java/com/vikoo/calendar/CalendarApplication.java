@@ -13,19 +13,19 @@ import com.vikoo.calendar.di.module.ContextModule;
 
 public class CalendarApplication extends Application {
 
-    private ApplicationComponent applicationComponent;
+    private ApplicationComponent mApplicationComponent;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        applicationComponent = DaggerApplicationComponent.builder()
+        mApplicationComponent = DaggerApplicationComponent.builder()
                 .contextModule(new ContextModule(this))
                 .build();
     }
 
 
     public ApplicationComponent getApplicationComponent(){
-        return applicationComponent;
+        return mApplicationComponent;
     }
 
     public static CalendarApplication get(Context context){

@@ -19,15 +19,15 @@ import butterknife.ButterKnife;
 public class EventViewHolder extends ChildViewHolder {
 
     @BindView(R.id.time)
-    public TextView tvTime;
+    public TextView mTvTime;
     @BindView(R.id.duration)
-    public TextView tvDuration;
+    public TextView mTvDuration;
     @BindView(R.id.event)
-    public TextView tvEventName;
+    public TextView mTvEventName;
     @BindView(R.id.location)
-    public TextView tvLocation;
+    public TextView mTvLocation;
     @BindView(R.id.event_color)
-    public ImageView ivEventColor;
+    public ImageView mIvEventColor;
 
     public EventViewHolder(View itemView) {
         super(itemView);
@@ -35,18 +35,18 @@ public class EventViewHolder extends ChildViewHolder {
     }
 
     public void setView(CalenderEvent event){
-        tvTime.setText(Utils.getTimeInAMPM(event.time));
+        mTvTime.setText(Utils.getTimeInAMPM(event.time));
         if(event.isAllDayEvent){
-            tvDuration.setText(R.string.all_day);
+            mTvDuration.setText(R.string.all_day);
         }else {
-            tvDuration.setText(Utils.getHours(event.duration));
+            mTvDuration.setText(Utils.getHours(event.duration));
         }
-        tvEventName.setText(event.eventTitle);
+        mTvEventName.setText(event.eventTitle);
         if(TextUtils.isEmpty(event.location)){
-            tvLocation.setVisibility(View.INVISIBLE);
+            mTvLocation.setVisibility(View.INVISIBLE);
         } else{
-            tvLocation.setVisibility(View.VISIBLE);
-            tvLocation.setText(event.location);
+            mTvLocation.setVisibility(View.VISIBLE);
+            mTvLocation.setText(event.location);
         }
     }
 }
