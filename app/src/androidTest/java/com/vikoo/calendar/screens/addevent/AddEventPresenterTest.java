@@ -6,7 +6,6 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.vikoo.calendar.db.AppDatabase;
-import com.vikoo.calendar.db.dao.CalenderEventDao;
 import com.vikoo.calendar.db.entity.CalenderEvent;
 import com.vikoo.calendar.di.component.ApplicationComponent;
 
@@ -21,6 +20,8 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.List;
 
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 /**
@@ -30,7 +31,6 @@ import static org.mockito.Mockito.when;
 public class AddEventPresenterTest {
 
     private AppDatabase mDb;
-    private CalenderEventDao mEventDao;
     private AddEventPresenter mAddEventPresenter;
 
     @Mock
@@ -48,7 +48,6 @@ public class AddEventPresenterTest {
         when(mApplicationComponent.getDatabase()).thenReturn(mDb);
         mAddEventPresenter.attach(mView, mApplicationComponent);
 
-        mEventDao = mDb.getCalenderEventDao();
     }
 
     @After
@@ -114,6 +113,18 @@ public class AddEventPresenterTest {
         list = mDb.getCalenderEventDao().getAllEvents();
         int after = list.size();
         Assert.assertTrue(after > before);
+    }
+
+    @Test
+    public void addEvent() throws Exception {
+        mAddEventPresenter.validate("event", "28/09/2017", "02:00", "1", false, 0);
+        verify(mView).onEventAdded();
+    }
+
+    @Test
+    public void addEvent_error() throws Exception {
+        mAddEventPresenter.validate("", "28/09/2017", "02:00", "1", false, 0);
+        verify(mView, never()).onEventAdded();
     }
 
 }
